@@ -1,10 +1,12 @@
 import express from "express";
 import AsyncHandler from "../utils/Asynchandler.js";
-import { getAllGadgets, createGadget, updateGadget, deleteGadget } from "../controller/gadget.controller.js";
+import { getAllGadgets, createGadget, updateGadget, deleteGadget, selfDestructGadget } from "../controller/gadget.controller.js";
 const gadgetRouter = express.Router();
 
 gadgetRouter.get("/", AsyncHandler(getAllGadgets))
 gadgetRouter.post("/", AsyncHandler(createGadget))
-gadgetRouter.patch("/:id", AsyncHandler(updateGadget))
-gadgetRouter.delete("/:id", AsyncHandler(deleteGadget))
+gadgetRouter.patch("/", AsyncHandler(updateGadget))
+gadgetRouter.delete("/", AsyncHandler(deleteGadget))
+gadgetRouter.post("/:id/self-destruct", AsyncHandler(selfDestructGadget))
+
 export default gadgetRouter;
