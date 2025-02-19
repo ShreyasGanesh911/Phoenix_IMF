@@ -50,7 +50,7 @@ export const updateGadget = async (req: Request, res: Response, next: NextFuncti
     }
     res.status(200).json({
         success,
-        message: `Gadget "${name}" updated successfully`
+        message: `Gadget with ID ${id} updated successfully`
     })
 }
 
