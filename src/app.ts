@@ -8,5 +8,11 @@ app.use(cors());
 
 app.use("/gadget", gadgetRouter);
 
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    message: "Route not found, try /gadget",
+  });
+});
+
 app.use(APIError);
 export default app;
