@@ -36,7 +36,7 @@ export const updateGadget = async (req: Request, res: Response, next: NextFuncti
     const {id,name,status} = req.body
     if(!id)  return next(new ErrorHandler("Gadget ID is required", 400));
     if(!name && !status) return next(new ErrorHandler("Name or status is required", 400));
-    if(!validStatus.includes(status)) return next(new ErrorHandler("Invalid status", 400));
+    if(status && !validStatus.includes(status)) return next(new ErrorHandler("Invalid status", 400));
     try{
         await db.none(
             `UPDATE gadgets 
